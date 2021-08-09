@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +23,17 @@ Route::get('/beranda', [MenuController::class, 'home']);
 Route::get('/info-kegiatan', [MenuController::class, 'info_kegiatan']);
 Route::get('/data-siswa', [MenuController::class, 'data_siswa']);
 
-Route::resource('siswa', SiswaController::class);
+Route::resource('siswa', SiswaController::class)
+->middleware('can:isAdmin');
+Route::resource('siswa', SiswaController::class)
+->only('show')->middleware('can:isAdminSiswa');
+
+Route::resource('user', UserController::class)
+->middleware('can:isAdmin');
+
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -34,11 +34,25 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        
                         <li>
+                        @can('isAdmin')
                             <a href="{{ url('/siswa') }}" class="nav-link">Data Siswa</a>
+                        @endcan
+                        </li>
+                        
+
+                        <li>
+                            <a href="{{ url('/info-kegiatan') }}" class="nav-link">Profil Siswa</a>
                         </li>
                         <li>
                             <a href="{{ url('/info-kegiatan') }}" class="nav-link">Info Kegiatan</a>
+                        </li>
+
+                        <li>
+                         @can('isAdmin')
+                            <a href="{{ url('/user') }}" class="nav-link">Manajemen User</a>
+                        @endcan
                         </li>
                     </ul>
 
