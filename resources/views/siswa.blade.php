@@ -8,7 +8,7 @@
     <title>LATIHAN_LARAVEL_SISWA</title>
 </head>
 <body>
-@extends('template')
+@extends('layouts.app')
 
 @section('content')
     <div>
